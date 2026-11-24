@@ -31,6 +31,7 @@ def main():
     target.mkdir(parents=True, exist_ok=True)
     tidy(target)
     (target / "entry.txt").write_text(EXCUSE, encoding="utf-8")
+    os.chmod(target / "entry.txt", 0o644)  # scorer must read it any umask
     print(f"wrote {len(EXCUSE)} characters to {target / 'entry.txt'}")
 
 
